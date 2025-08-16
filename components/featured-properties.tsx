@@ -1,8 +1,8 @@
 "use client"
 
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { MapPin, Bed, Bath, Square, TrendingUp, Shield } from "lucide-react"
 import { useState } from "react"
 import { EscrowCreationDialog } from "@/components/payments/escrow-creation-dialog"
@@ -20,6 +20,7 @@ const featuredProperties = [
     baths: 2,
     sqft: 1200,
     type: "Apartment",
+    status: "Available",
     verified: true,
     roi: "12%",
     availableTokens: 250,
@@ -36,6 +37,7 @@ const featuredProperties = [
     baths: 4,
     sqft: 3500,
     type: "Commercial",
+    status: "Available",
     verified: true,
     roi: "15%",
     availableTokens: 200,
@@ -51,8 +53,9 @@ const featuredProperties = [
     beds: 5,
     baths: 4,
     sqft: 4200,
-    type: "Villa",
-    verified: true,
+    type: "Residential",
+    status: "Coming Soon",
+    verified: false,
     roi: "10%",
     availableTokens: 150,
   },

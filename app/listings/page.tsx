@@ -27,6 +27,8 @@ interface Property {
   roi?: number
   image: string
   verified: boolean
+  type: string
+  status: string
   propertyType: "residential" | "commercial" | "mixed"
   listingType: "rent" | "sale" | "installment" | "tokenized"
 }
@@ -43,6 +45,8 @@ const mockProperties: Property[] = [
     area: 1200,
     image: "/modern-apartment.png",
     verified: true,
+    type: "Apartment",
+    status: "Available",
     propertyType: "residential",
     listingType: "rent",
   },
@@ -57,6 +61,8 @@ const mockProperties: Property[] = [
     area: 2000,
     image: "/modern-glass-office.png",
     verified: true,
+    type: "Office",
+    status: "Available",
     propertyType: "commercial",
     listingType: "rent",
   },
@@ -68,8 +74,10 @@ const mockProperties: Property[] = [
     bedrooms: 4,
     bathrooms: 3,
     area: 2500,
-    image: "/modern-apartment-building.png",
+    image: "/luxury-villa.png",
     verified: true,
+    type: "Villa",
+    status: "Available",
     propertyType: "residential",
     listingType: "sale",
   },
@@ -82,10 +90,12 @@ const mockProperties: Property[] = [
     bedrooms: 0,
     bathrooms: 8,
     area: 5000,
-    image: "/modern-building-construction.png",
-    verified: true,
+    image: "/office-building.png",
+    verified: false,
+    type: "Office",
+    status: "Coming Soon",
     propertyType: "commercial",
-    listingType: "installment",
+    listingType: "tokenized",
   },
   {
     id: "5",
@@ -101,6 +111,8 @@ const mockProperties: Property[] = [
     roi: 12.5,
     image: "/kenyan-beachfront-resort.png",
     verified: true,
+    type: "Resort",
+    status: "Available",
     propertyType: "commercial",
     listingType: "tokenized",
   },
@@ -116,8 +128,10 @@ const mockProperties: Property[] = [
     bathrooms: 60,
     area: 8000,
     roi: 15.2,
-    image: "/south-african-student-housing.png",
+    image: "/student-housing.png",
     verified: true,
+    type: "Housing",
+    status: "Available",
     propertyType: "residential",
     listingType: "tokenized",
   },

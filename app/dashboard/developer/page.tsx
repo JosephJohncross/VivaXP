@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Users, Zap, Rocket, TrendingUp, DollarSign, Building } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function DeveloperDashboard() {
   const [showNewProjectModal, setShowNewProjectModal] = useState(false)

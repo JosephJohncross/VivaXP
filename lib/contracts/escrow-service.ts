@@ -1,5 +1,5 @@
 import { ethers } from "ethers"
-import type { EscrowContract, EscrowStatus, Milestone, Transaction, PaymentMethod } from "./escrow-types"
+import { EscrowContract, EscrowStatus, Milestone, MilestoneStatus, Transaction, PaymentMethod } from "./escrow-types"
 
 // Mock escrow contract ABI - in production, this would be the actual smart contract ABI
 const ESCROW_ABI = [
@@ -69,7 +69,7 @@ export class EscrowService {
       try {
         // Use a mock contract address for development
         const mockContractAddress = "0x1234567890123456789012345678901234567890"
-        const signer = await this.provider.getSigner()
+        const signer = await (this.provider as any).getSigner()
         this.contract = new ethers.Contract(mockContractAddress, ESCROW_ABI, signer)
       } catch (error) {
         console.warn("Could not initialize contract, using mock mode:", error)
@@ -80,7 +80,7 @@ export class EscrowService {
 
   async initializeContract(contractAddress: string) {
     if (!this.provider) throw new Error("No provider available")
-    const signer = await this.provider.getSigner()
+    const signer = await (this.provider as any).getSigner()
     this.contract = new ethers.Contract(contractAddress, ESCROW_ABI, signer)
   }
 
@@ -113,15 +113,18 @@ export class EscrowService {
       const escrowData: EscrowContract = {
         address: escrowId,
         propertyId,
-        buyer: this.contract ? (await this.contract.runner?.getAddress()) || "" : "mock_buyer_address",
+        buyer: this.contract ? (await (this.contract.runner as any)?.getAddress()) || "" : "mock_buyer_address",
         seller,
         amount,
         currency,
         status: "CREATED" as EscrowStatus,
         milestones: milestones.map((m, index) => ({
-          ...m,
-          id: `milestone_${index}`,
-          status: "pending" as const,
+          id: `milestone_${index + 1}`,
+          status: "pending" as MilestoneStatus,
+          description: m.description,
+          amount: m.amount,
+          dueDate: m.dueDate,
+          completedAt: m.completedAt,
         })),
         createdAt: Date.now(),
         expiresAt: Date.now() + 30 * 24 * 60 * 60 * 1000, // 30 days
@@ -232,7 +235,7 @@ export class EscrowService {
       transaction.confirmedAt = Date.now()
 
       // Update milestone status
-      milestone.status = "completed" as const
+      milestone.status = "completed" as MilestoneStatus
       milestone.completedAt = Date.now()
 
       // Check if all milestones are completed
@@ -287,7 +290,7 @@ export class EscrowService {
       const dispute = {
         escrowId,
         reason,
-        raisedBy: this.contract ? (await this.contract.runner?.getAddress()) || "" : "mock_user_address",
+        raisedBy: this.contract ? (await (this.contract.runner as any)?.getAddress()) || "" : "mock_user_address",
         raisedAt: Date.now(),
         status: "open",
       }
@@ -308,7 +311,7 @@ export class EscrowService {
         await tx.wait()
       }
 
-      escrowData.status = favorBuyer ? "RESOLVED_IN_FAVOR_OF_BUYER" : "RESOLVED_IN_FAVOR_OF_SELLER"
+      escrowData.status = favorBuyer ? EscrowStatus.RESOLVED_IN_FAVOR_OF_BUYER : EscrowStatus.RESOLVED_IN_FAVOR_OF_SELLER
       localStorage.setItem(`escrow_${escrowId}`, this.serializeEscrowData(escrowData))
     } catch (error) {
       console.error("Error resolving dispute:", error)

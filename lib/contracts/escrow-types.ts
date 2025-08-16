@@ -19,6 +19,8 @@ export enum EscrowStatus {
   DISPUTED = "disputed",
   CANCELLED = "cancelled",
   REFUNDED = "refunded",
+  RESOLVED_IN_FAVOR_OF_BUYER = "RESOLVED_IN_FAVOR_OF_BUYER",
+  RESOLVED_IN_FAVOR_OF_SELLER = "RESOLVED_IN_FAVOR_OF_SELLER",
 }
 
 export interface Milestone {

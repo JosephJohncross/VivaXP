@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Building2, Zap, TrendingUp, Users, DollarSign, Plus } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function PropertyOwnerDashboard() {
   const mockProperties = [
