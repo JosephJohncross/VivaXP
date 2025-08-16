@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Home, Zap, Wrench, CreditCard, Search } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function TenantDashboard() {
   const [showPaymentModal, setShowPaymentModal] = useState(false)
