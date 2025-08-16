@@ -8,7 +8,7 @@ import { Search, Menu, X, Home, Building, Zap, Users } from "lucide-react"
 import { useAuth } from "@/contexts/auth-context"
 import { LoginDialog } from "@/components/auth/login-dialog"
 import { UserMenu } from "@/components/auth/user-menu"
-import { TextToSpeech } from "@/components/ui/text-to-speech"
+
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -59,13 +59,7 @@ export function Header() {
                   className="w-64 pl-10 font-serif cyber-card border-primary/30 focus:neon-border"
                 />
               </div>
-              <TextToSpeech 
-                text="Welcome to VidaXP - Your Web3 Real Estate Platform. Navigate through our cyberpunk-themed interface to discover tokenized real estate investments, manage your portfolio, and explore the future of property ownership."
-                variant="ghost"
-                size="icon"
-                showControls={true}
-                className="hidden md:flex"
-              />
+
               {isLoading ? (
                 <Button disabled className="font-serif">
                   <div className="flex items-center gap-2">

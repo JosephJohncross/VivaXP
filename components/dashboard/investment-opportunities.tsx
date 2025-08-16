@@ -72,17 +72,18 @@ export function InvestmentOpportunities() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gradient-accent">Investment Opportunities</h2>
-          <p className="text-muted-foreground">Discover new tokenized real estate investments</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gradient-accent">Investment Opportunities</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">Discover new tokenized real estate investments</p>
         </div>
-        <Button variant="outline" className="border-accent/50 text-accent hover:border-accent hover:bg-accent/10 transition-all duration-300">
-          View All Opportunities
+        <Button variant="outline" className="border-accent/50 text-accent hover:border-accent hover:bg-accent/10 transition-all duration-300 w-full sm:w-auto">
+          <span className="hidden sm:inline">View All Opportunities</span>
+          <span className="sm:hidden">View All</span>
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {opportunities.map((opportunity) => (
           <Card key={opportunity.id} className="overflow-hidden cyber-card border border-border/50 glow-on-hover hologram-effect transition-all duration-300 hover:scale-105">
             <div className="relative">

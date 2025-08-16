@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { TextToSpeech } from "@/components/ui/text-to-speech"
+
 import { TrendingUp, Home, Users, Building2, Wallet, ArrowRight, Zap, Shield, Globe } from "lucide-react"
 import { useRouter } from "next/navigation"
 
@@ -103,17 +103,9 @@ export default function SelectRolePage() {
             <Shield className="w-8 h-8 text-secondary neon-glow" />
           </div>
 
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <h2 className="text-2xl md:text-4xl font-bold">
-              Choose Your <span className="text-gradient-neon">Web3 Journey</span>
-            </h2>
-            <TextToSpeech 
-              text="Choose Your Web3 Journey - Enter the future of real estate with blockchain technology. Select your role to access personalized features and start your decentralized property experience. Choose from Crypto Investor, Property Owner, Tenant, or Real Estate Developer."
-              variant="ghost"
-              size="icon"
-              showControls={true}
-            />
-          </div>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">
+            Choose Your <span className="text-gradient-neon">Web3 Journey</span>
+          </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Enter the future of real estate with blockchain technology. Select your role to access personalized features
@@ -137,7 +129,7 @@ export default function SelectRolePage() {
         </div>
 
         {/* Role Selection Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12">
           {userTypes.map((userType) => {
             const Icon = userType.icon
             const isSelected = selectedRole === userType.id

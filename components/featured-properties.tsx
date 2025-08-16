@@ -78,7 +78,7 @@ export function FeaturedProperties() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {featuredProperties.map((property) => (
               <Card key={property.id} className="overflow-hidden cyber-card border border-border/50 glow-on-hover hologram-effect transition-all duration-300 hover:scale-105">
                 <div className="relative">
@@ -87,16 +87,11 @@ export function FeaturedProperties() {
                     alt={property.title}
                     className="w-full h-48 object-cover"
                   />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <Badge variant="secondary" className="bg-secondary/20 text-secondary border-secondary/50 neon-border">
+                  <div className="flex items-center space-x-2 flex-wrap gap-1 absolute top-4 left-4">
+                    <Badge variant="outline" className="border-secondary/50 text-secondary neon-border text-xs">
                       {property.type}
                     </Badge>
-                    {property.verified && (
-                      <Badge className="gradient-primary text-white neon-border">
-                        <Shield className="h-3 w-3 mr-1 neon-glow" />
-                        Verified
-                      </Badge>
-                    )}
+                    <Badge className="gradient-accent text-white neon-border text-xs">{property.status}</Badge>
                   </div>
                   <div className="absolute top-4 right-4">
                     <Badge variant="outline" className="bg-background/90 border-accent/50 text-accent neon-border">
@@ -106,37 +101,39 @@ export function FeaturedProperties() {
                   </div>
                 </div>
 
-                <CardHeader>
-                  <h3 className="text-xl font-semibold text-gradient-secondary">{property.title}</h3>
-                  <div className="flex items-center text-muted-foreground">
-                    <MapPin className="h-4 w-4 mr-1 text-accent neon-glow" />
-                    <span className="text-sm">{property.location}</span>
+                <CardHeader className="p-3 sm:p-4">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-base sm:text-lg font-semibold text-gradient-primary mb-1 truncate">{property.title}</CardTitle>
+                      <div className="flex items-center text-xs sm:text-sm text-muted-foreground mb-2">
+                        <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1 neon-glow flex-shrink-0" />
+                        <span className="truncate">{property.location}</span>
+                      </div>
+                    </div>
+                    <div className="text-right sm:text-right w-full sm:w-auto">
+                      <div className="text-xl sm:text-2xl font-bold text-gradient-primary">${property.price.toLocaleString()}</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Total Price</div>
+                    </div>
                   </div>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between text-sm">
-                    {property.beds && (
-                      <div className="flex items-center">
-                        <Bed className="h-4 w-4 mr-1 text-primary neon-glow" />
-                        <span>{property.beds} beds</span>
-                      </div>
-                    )}
+                <CardContent className="p-3 sm:p-4 pt-0">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 text-xs sm:text-sm mb-4">
                     <div className="flex items-center">
-                      <Bath className="h-4 w-4 mr-1 text-secondary neon-glow" />
-                      <span>{property.baths} baths</span>
+                      <Bed className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 text-primary neon-glow flex-shrink-0" />
+                      <span className="truncate">{property.beds} beds</span>
                     </div>
                     <div className="flex items-center">
-                      <Square className="h-4 w-4 mr-1 text-accent neon-glow" />
-                      <span>{property.sqft} sqft</span>
+                      <Bath className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 text-secondary neon-glow flex-shrink-0" />
+                      <span className="truncate">{property.baths} baths</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Square className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 text-accent neon-glow flex-shrink-0" />
+                      <span className="truncate">{property.sqft} sqft</span>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Full Price:</span>
-                      <span className="font-semibold text-gradient-primary">{property.price}</span>
-                    </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-muted-foreground">Monthly Rent:</span>
                       <span className="font-semibold text-gradient-secondary">{property.monthlyRent}</span>

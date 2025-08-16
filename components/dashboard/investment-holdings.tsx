@@ -96,17 +96,17 @@ export function InvestmentHoldings() {
         {investments.map((investment) => (
           <Card key={investment.id} className="cyber-card border border-border/50 glow-on-hover hologram-effect transition-all duration-300 hover:scale-105">
             <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-start space-x-4">
+              <div className="flex flex-col sm:flex-row items-start justify-between mb-4 space-y-4 sm:space-y-0">
+                <div className="flex items-start space-x-4 w-full sm:w-auto">
                   <img
                     src={investment.image || "/placeholder.svg"}
                     alt={investment.propertyTitle}
-                    className="w-16 h-16 rounded-lg object-cover neon-border"
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg object-cover neon-border flex-shrink-0"
                   />
-                  <div>
-                    <h3 className="text-lg font-semibold text-gradient-primary">{investment.propertyTitle}</h3>
-                    <p className="text-sm text-muted-foreground mb-2">{investment.location}</p>
-                    <div className="flex items-center space-x-2">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg font-semibold text-gradient-primary truncate">{investment.propertyTitle}</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-2 truncate">{investment.location}</p>
+                    <div className="flex items-center space-x-2 flex-wrap gap-1">
                       <Badge variant="outline" className="border-secondary/50 text-secondary neon-border">
                         {investment.propertyType}
                       </Badge>
@@ -114,12 +114,12 @@ export function InvestmentHoldings() {
                     </div>
                   </div>
                 </div>
-                <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-all duration-300">
+                <Button variant="ghost" size="sm" className="hover:bg-primary/10 hover:text-primary transition-all duration-300 self-start sm:self-auto">
                   <MoreHorizontal className="h-4 w-4 neon-glow" />
                 </Button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
                 <div className="space-y-1">
                   <p className="font-serif text-xs text-muted-foreground">Investment</p>
                   <p className="font-sans font-semibold text-foreground">

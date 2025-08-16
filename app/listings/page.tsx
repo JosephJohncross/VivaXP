@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { TextToSpeech } from "@/components/ui/text-to-speech"
+
 import { Search, MapPin, Bed, Bath, Square, TrendingUp } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -250,15 +250,7 @@ export default function ListingsPage() {
       {/* Header */}
       <div className="relative z-10 cyber-card border-b border-border/50 py-12">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <h1 className="text-4xl font-bold text-center text-gradient-primary">Property Listings</h1>
-            <TextToSpeech 
-              text="Property Listings - Discover real estate opportunities across Africa. Rent, buy, or invest in verified properties. Use the filters to find properties by location, price range, property type, and more."
-              variant="ghost"
-              size="icon"
-              showControls={false}
-            />
-          </div>
+          <h1 className="text-4xl font-bold text-center mb-4 text-gradient-primary">Property Listings</h1>
           <p className="text-xl text-muted-foreground text-center max-w-2xl mx-auto">
             Discover real estate opportunities across Africa. Rent, buy, or invest in verified properties.
           </p>
@@ -268,7 +260,7 @@ export default function ListingsPage() {
       {/* Filters */}
       <div className="container mx-auto px-4 py-8 relative z-10">
         <div className="cyber-card rounded-lg p-6 border border-border/50 glow-on-hover mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
             <div className="relative">
               <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground neon-glow" />
               <Input
@@ -339,7 +331,7 @@ export default function ListingsPage() {
         </div>
 
         {/* Property Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredProperties.map((property) => (
             <Card key={property.id} className="overflow-hidden cyber-card border border-border/50 glow-on-hover hologram-effect transition-all duration-300 hover:scale-105">
               <div className="relative">
@@ -364,12 +356,16 @@ export default function ListingsPage() {
                 </Badge>
               </div>
 
-              <CardHeader>
-                <CardTitle className="text-lg text-gradient-primary">{property.title}</CardTitle>
-                <CardDescription className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4 neon-glow" />
-                  {property.location}
-                </CardDescription>
+              <CardHeader className="p-3 sm:p-4">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-2">
+                  <div className="flex-1 min-w-0">
+                    <CardTitle className="text-base sm:text-lg font-semibold text-gradient-primary mb-1 truncate">{property.title}</CardTitle>
+                    <div className="flex items-center text-xs sm:text-sm text-muted-foreground mb-2">
+                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1 neon-glow flex-shrink-0" />
+                      <span className="truncate">{property.location}</span>
+                    </div>
+                  </div>
+                </div>
               </CardHeader>
 
               <CardContent>
@@ -383,26 +379,26 @@ export default function ListingsPage() {
                         <span className="text-sm text-muted-foreground">/month</span>
                       </div>
                     ) : property.listingType === "installment" ? (
-                      <div>
-                        <span className="text-2xl font-bold text-primary">{formatPrice(property.price)}</span>
-                        <div className="text-sm text-muted-foreground">
-                          {formatPrice(property.installmentPrice || 0)}/month
+                      <div className="text-right sm:text-right w-full sm:w-auto">
+                        <div className="text-xl sm:text-2xl font-bold text-gradient-primary">${property.price.toLocaleString()}</div>
+                        <div className="text-xs sm:text-sm text-muted-foreground">Total Price</div>
+                        <div className="text-right sm:text-right w-full sm:w-auto">
+                          <div className="text-sm sm:text-base font-bold text-gradient-primary">{formatPrice(property.installmentPrice || 0)}/month</div>
                         </div>
                       </div>
                     ) : (
                       <span className="text-2xl font-bold text-primary">{formatPrice(property.price)}</span>
                     )}
-
-                    {property.roi && (
-                      <div className="flex items-center gap-1 text-green-600">
-                        <TrendingUp className="h-4 w-4" />
-                        <span className="font-semibold">{property.roi}% ROI</span>
-                      </div>
-                    )}
                   </div>
 
                   {property.bedrooms > 0 && (
                     <div className="flex gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center space-x-2 flex-wrap gap-1">
+                        <Badge variant="outline" className="border-secondary/50 text-secondary neon-border text-xs">
+                          {property.type}
+                        </Badge>
+                        <Badge className="gradient-accent text-white neon-border text-xs">{property.status}</Badge>
+                      </div>
                       <div className="flex items-center gap-1">
                         <Bed className="h-4 w-4" />
                         {property.bedrooms} beds

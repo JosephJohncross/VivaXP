@@ -60,49 +60,49 @@ export default function DeveloperDashboard() {
         <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-secondary/8 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Users className="w-8 h-8 text-primary neon-glow" />
-            <h1 className="text-3xl font-bold text-gradient-primary">Developer Dashboard</h1>
-            <Zap className="w-6 h-6 text-secondary neon-glow" />
+      <div className="relative z-10 container mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4">
+            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary neon-glow" />
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient-primary">Developer Dashboard</h1>
+            <Zap className="w-4 h-4 sm:w-6 sm:h-6 text-secondary neon-glow" />
           </div>
-          <p className="text-muted-foreground">Manage your development projects and track progress</p>
+          <p className="text-sm sm:text-base text-muted-foreground">Manage your development projects and track progress</p>
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
           <button
             onClick={handleNewProject}
-            className="w-full gradient-primary p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-primary/50 flex items-center justify-center gap-2"
+            className="w-full gradient-primary p-3 sm:p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-primary/50 flex items-center justify-center gap-2"
           >
-            <Building className="w-5 h-5" />
-            Create New Project
+            <Building className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Create New Project</span>
           </button>
           <button
             onClick={handleFindInvestors}
-            className="w-full border border-secondary/50 text-secondary p-4 rounded-lg hover:bg-secondary/10 hover:border-secondary transition-all duration-300 hover:scale-105 cyber-card flex items-center justify-center gap-2"
+            className="w-full border border-secondary/50 text-secondary p-3 sm:p-4 rounded-lg hover:bg-secondary/10 hover:border-secondary transition-all duration-300 hover:scale-105 cyber-card flex items-center justify-center gap-2"
           >
-            <TrendingUp className="w-5 h-5" />
-            Find Investors
+            <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Find Investors</span>
           </button>
           <button
             onClick={handleTokenLaunch}
-            className="w-full gradient-accent p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-accent/50 flex items-center justify-center gap-2"
+            className="w-full gradient-accent p-3 sm:p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-accent/50 flex items-center justify-center gap-2"
           >
-            <Rocket className="w-5 h-5" />
-            Launch Token Sale
+            <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Launch Token Sale</span>
           </button>
         </div>
 
         {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="cyber-card p-6 rounded-lg border border-border/50 glow-on-hover hologram-effect">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="cyber-card p-4 sm:p-6 rounded-lg border border-border/50 glow-on-hover hologram-effect">
             <div className="flex items-center gap-2 mb-2">
-              <Building className="w-5 h-5 text-primary neon-glow" />
-              <h3 className="text-sm font-medium text-muted-foreground">Active Projects</h3>
+              <Building className="w-4 h-4 sm:w-5 sm:h-5 text-primary neon-glow" />
+              <h3 className="text-xs sm:text-sm font-medium text-muted-foreground">Active Projects</h3>
             </div>
-            <p className="text-2xl font-bold text-gradient-primary">5</p>
+            <p className="text-xl sm:text-2xl font-bold text-gradient-primary">2</p>
             <p className="text-xs text-green-400">+1 this quarter</p>
           </div>
           <div className="cyber-card p-6 rounded-lg border border-border/50 glow-on-hover hologram-effect">

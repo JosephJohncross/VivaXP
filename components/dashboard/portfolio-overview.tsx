@@ -69,14 +69,14 @@ export function PortfolioOverview() {
   return (
     <div className="space-y-6">
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <Card className="cyber-card border border-border/50 glow-on-hover hologram-effect transition-all duration-300 hover:scale-105">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-gradient-primary">Portfolio Value</CardTitle>
+            <CardTitle className="text-xs sm:text-sm font-medium text-gradient-primary">Portfolio Value</CardTitle>
             <DollarSign className="h-4 w-4 text-primary neon-glow" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gradient-primary">${summary.currentValue.toLocaleString()}</div>
+            <div className="text-xl sm:text-2xl font-bold text-gradient-primary">${summary.currentValue.toLocaleString()}</div>
             <div className="flex items-center text-xs">
               {summary.portfolioGrowth >= 0 ? (
                 <ArrowUpRight className="h-3 w-3 text-primary neon-glow mr-1" />
@@ -86,7 +86,7 @@ export function PortfolioOverview() {
               <span className={summary.portfolioGrowth >= 0 ? "text-primary" : "text-destructive"}>
                 {summary.portfolioGrowth.toFixed(1)}%
               </span>
-              <span className="text-muted-foreground ml-1">from cost basis</span>
+              <span className="text-muted-foreground ml-1 hidden sm:inline">from cost basis</span>
             </div>
           </CardContent>
         </Card>
@@ -126,13 +126,14 @@ export function PortfolioOverview() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <Card className="cyber-card border border-border/50 glow-on-hover hologram-effect">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-lg text-gradient-primary">Portfolio Performance</CardTitle>
             <Button variant="outline" size="sm" onClick={handleExportReport} className="border-primary/50 text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300">
               <Download className="h-4 w-4 mr-2 neon-glow" />
-              Export Report
+              <span className="hidden sm:inline">Export Report</span>
+              <span className="sm:hidden">Export</span>
             </Button>
           </CardHeader>
           <CardContent>
@@ -141,7 +142,7 @@ export function PortfolioOverview() {
                 value: { label: "Portfolio Value", color: "hsl(var(--chart-1))" },
                 returns: { label: "Monthly Returns", color: "hsl(var(--chart-2))" },
               }}
-              className="h-[300px]"
+              className="h-[250px] sm:h-[300px]"
             >
               <LineChart data={performanceData}>
                 <XAxis dataKey="month" />
@@ -177,7 +178,7 @@ export function PortfolioOverview() {
                 commercial: { label: "Commercial", color: "hsl(var(--chart-2))" },
                 villa: { label: "Villa", color: "hsl(var(--chart-3))" },
               }}
-              className="h-[300px]"
+              className="h-[250px] sm:h-[300px]"
             >
               <PieChart>
                 <Pie

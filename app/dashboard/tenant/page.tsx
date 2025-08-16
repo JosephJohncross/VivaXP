@@ -63,45 +63,45 @@ export default function TenantDashboard() {
         <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-accent/8 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Home className="w-8 h-8 text-secondary neon-glow" />
-            <h1 className="text-3xl font-bold text-gradient-secondary">Tenant Dashboard</h1>
-            <Zap className="w-6 h-6 text-primary neon-glow" />
+      <div className="relative z-10 container mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4">
+            <Home className="w-6 h-6 sm:w-8 sm:h-8 text-secondary neon-glow" />
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient-secondary">Tenant Dashboard</h1>
+            <Zap className="w-4 h-4 sm:w-6 sm:h-6 text-primary neon-glow" />
           </div>
-          <p className="text-muted-foreground">Manage your rentals and applications</p>
+          <p className="text-sm sm:text-base text-muted-foreground">Manage your rentals and applications</p>
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
           <Link href="/listings">
-            <button className="w-full gradient-secondary p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-secondary/50 flex items-center justify-center gap-2">
-              <Search className="w-5 h-5" />
-              Browse Properties
+            <button className="w-full gradient-secondary p-3 sm:p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-secondary/50 flex items-center justify-center gap-2">
+              <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">Browse Properties</span>
             </button>
           </Link>
           <button
             onClick={handleMaintenanceRequest}
-            className="w-full border border-accent/50 text-accent p-4 rounded-lg hover:bg-accent/10 hover:border-accent transition-all duration-300 hover:scale-105 cyber-card flex items-center justify-center gap-2"
+            className="w-full border border-accent/50 text-accent p-3 sm:p-4 rounded-lg hover:bg-accent/10 hover:border-accent transition-all duration-300 hover:scale-105 cyber-card flex items-center justify-center gap-2"
           >
-            <Wrench className="w-5 h-5" />
-            Request Maintenance
+            <Wrench className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Request Maintenance</span>
           </button>
           <button
             onClick={handlePayRent}
-            className="w-full gradient-primary p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-primary/50 flex items-center justify-center gap-2"
+            className="w-full gradient-primary p-3 sm:p-4 rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 cyber-card border border-primary/50 flex items-center justify-center gap-2"
           >
-            <CreditCard className="w-5 h-5" />
-            Pay Rent
+            <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Pay Rent</span>
           </button>
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="cyber-card p-6 rounded-lg border border-border/50 glow-on-hover hologram-effect">
-            <h3 className="text-sm font-medium text-muted-foreground">Current Rentals</h3>
-            <p className="text-2xl font-bold text-gradient-primary">1</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
+          <div className="cyber-card p-4 sm:p-6 rounded-lg border border-border/50 glow-on-hover hologram-effect">
+            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground">Current Rentals</h3>
+            <p className="text-xl sm:text-2xl font-bold text-gradient-primary">1</p>
           </div>
           <div className="cyber-card p-6 rounded-lg border border-border/50 glow-on-hover hologram-effect">
             <h3 className="text-sm font-medium text-muted-foreground">Monthly Rent</h3>
@@ -114,8 +114,8 @@ export default function TenantDashboard() {
         </div>
 
         {/* Current Rentals */}
-        <div className="bg-card rounded-lg border p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-6">Current Rentals</h2>
+        <div className="bg-card rounded-lg border p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-semibold mb-4">Current Rentals</h2>
           <div className="space-y-4">
             {mockRentals.map((rental) => (
               <div key={rental.id} className="border rounded-lg p-4 flex gap-4">

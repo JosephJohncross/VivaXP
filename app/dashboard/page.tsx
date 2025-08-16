@@ -2,7 +2,7 @@ import { ProtectedRoute } from "@/components/auth/protected-route"
 import { PortfolioOverview } from "@/components/dashboard/portfolio-overview"
 import { InvestmentHoldings } from "@/components/dashboard/investment-holdings"
 import { InvestmentOpportunities } from "@/components/dashboard/investment-opportunities"
-import { TextToSpeech } from "@/components/ui/text-to-speech"
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TrendingUp, Zap } from "lucide-react"
 
@@ -19,18 +19,12 @@ export default function DashboardPage() {
           <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-accent/8 rounded-full blur-3xl animate-pulse delay-2000" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="relative z-10 container mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8">
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <TrendingUp className="w-8 h-8 text-primary neon-glow" />
               <h1 className="text-3xl font-bold text-gradient-primary">Investment Dashboard</h1>
               <Zap className="w-6 h-6 text-secondary neon-glow" />
-              <TextToSpeech 
-                text="Investment Dashboard - Track your real estate investments and portfolio performance. View your portfolio overview, investment holdings, and discover new investment opportunities in tokenized real estate."
-                variant="ghost"
-                size="icon"
-                showControls={false}
-              />
             </div>
             <p className="text-muted-foreground">
               Track your real estate investments and portfolio performance
